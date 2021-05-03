@@ -56,11 +56,15 @@ public abstract class Grouping implements Event, WithStyle {
 	final private Style styleHeader;
 
 	public StyleSignature getDefaultStyleDefinition() {
-		return StyleSignature.of(SName.root, SName.element, SName.sequenceDiagram, SName.group);
+		StyleSignature sig = StyleSignature.of(SName.root, SName.element, SName.sequenceDiagram, SName.group);
+		sig = sig.add("group_" + title);
+		return sig;
 	}
 
 	private StyleSignature getHeaderStyleDefinition() {
-		return StyleSignature.of(SName.root, SName.element, SName.sequenceDiagram, SName.groupHeader);
+		StyleSignature sig = StyleSignature.of(SName.root, SName.element, SName.sequenceDiagram, SName.groupHeader);
+		sig = sig.add("group_" + title);
+		return sig;
 	}
 
 	public Style[] getUsedStyles() {
